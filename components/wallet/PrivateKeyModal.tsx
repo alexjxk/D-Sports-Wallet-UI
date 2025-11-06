@@ -34,21 +34,41 @@ export function PrivateKeyModal({ isOpen, onClose, address }: PrivateKeyModalPro
   const userSession = useSession();
 
   const handleRetrievePrivateKey = async () => {
-    if (!address || !userSession) return;
+    if (!address) return;
     
     try {
       setIsLoading(true);
       setErrorMsg(null);
       
-      // Fetch encrypted private key from server
-      const encryptedPrivateKey = await fetchUserWalletPrivateKey(address);
+      // Try to fetch from localStorage first (client-side mode)
+      const localSecret = 'local-wallet-secret-' + (typeof window !== 'undefined' ? window.location.hostname : 'dev');
+      const storedKey = localStorage.getItem(`wallet_${address}`);
       
-      // Decrypt using session ID
-      const decryptedPrivateKey = decryptPrivateKey(encryptedPrivateKey, userSession.id);
+      if (storedKey) {
+        // Decrypt using local secret
+        const decryptedPrivateKey = decryptPrivateKey(storedKey, localSecret);
+        setPrivateKey(decryptedPrivateKey);
+        setHasRetrieved(true);
+        setShowPrivateKey(true);
+        return;
+      }
       
-      setPrivateKey(decryptedPrivateKey);
-      setHasRetrieved(true);
-      setShowPrivateKey(true);
+      // Fallback to server if userSession exists and backend is enabled
+      if (userSession) {
+        try {
+          const encryptedPrivateKey = await fetchUserWalletPrivateKey(address);
+          const decryptedPrivateKey = decryptPrivateKey(encryptedPrivateKey, userSession.id);
+          setPrivateKey(decryptedPrivateKey);
+          setHasRetrieved(true);
+          setShowPrivateKey(true);
+          return;
+        } catch (serverError) {
+          // Server fetch failed, continue to error message
+        }
+      }
+      
+      // No private key found
+      throw new Error('Private key not found. This wallet was not created in this session.');
       
     } catch (err: unknown) {
       const error = err as Error;
@@ -124,7 +144,7 @@ export function PrivateKeyModal({ isOpen, onClose, address }: PrivateKeyModalPro
 
               <Button 
                 onClick={handleRetrievePrivateKey} 
-                disabled={isLoading || !address || !userSession}
+                disabled={isLoading || !address}
                 className="w-full"
                 variant="destructive"
               >

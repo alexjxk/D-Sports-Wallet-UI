@@ -56,22 +56,22 @@ export default function WalletDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="flex items-center gap-2 px-3 py-2 rounded-full border"
-          style={{ backgroundColor: active?.color || '#f3f4f6', color: '#222' }}
+          className="flex items-center gap-2 px-3 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-50"
+          style={{ backgroundColor: active?.color || '#ffffff', color: '#111827' }}
         >
           <span className="text-xl">{active?.icon || '💼'}</span>
-          <span className="font-semibold">
+          <span className="font-semibold text-sm">
             {active?.label || (active?.address ? `${active.address.slice(0, 6)}...${active.address.slice(-4)}` : 'Select Wallet')}
           </span>
-          <ChevronDown className="w-4 h-4 ml-1" />
+          <ChevronDown className="w-4 h-4 ml-1 text-gray-600" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="min-w-[220px]">
+      <DropdownMenuContent align="start" className="min-w-[220px] bg-white border border-gray-200">
         {wallets.map((w) => (
           <DropdownMenuItem
             key={w.address}
             className="flex items-center gap-2 group"
-            style={{ backgroundColor: w.address === address ? '#f3f4f6' : undefined }}
+            style={{ backgroundColor: w.address === address ? '#fef3c7' : undefined }}
             onClick={() => setAddress(w.address)}
           >
             <span className="text-xl mr-1">{w.icon || '💼'}</span>

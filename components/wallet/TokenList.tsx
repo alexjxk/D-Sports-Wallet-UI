@@ -6,6 +6,7 @@ import { useTokenBalances } from '@/hooks/useTokenBalances';
 import { useMultipleTokenPrices } from '@/hooks/useTokenPrices';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
+import { CRYPTO_IMAGES } from '@/utils/cryptoImages';
 
 interface TokenListProps {
   walletAddress?: string;
@@ -17,7 +18,7 @@ const DEMO_TOKENS = [
   {
     name: 'Dogecoin',
     symbol: 'DOGE',
-    logo: '/crypto-images/Dogecoin Logo.svg',
+    logo: CRYPTO_IMAGES.DOGE,
     token_address: '0xDOGE',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -27,7 +28,7 @@ const DEMO_TOKENS = [
   {
     name: 'Ethereum',
     symbol: 'ETH',
-    logo: '/crypto-images/Ethereum ETH Logo.svg',
+    logo: CRYPTO_IMAGES.ETH,
     token_address: '0xETH',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -37,7 +38,7 @@ const DEMO_TOKENS = [
   {
     name: 'Bitcoin',
     symbol: 'BTC',
-    logo: '/crypto-images/Bitcoin BTC Logo.svg',
+    logo: CRYPTO_IMAGES.BTC,
     token_address: '0xBTC',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -47,7 +48,7 @@ const DEMO_TOKENS = [
   {
     name: 'USD Coin',
     symbol: 'USDC',
-    logo: '/crypto-images/USD Coin Logo.svg',
+    logo: CRYPTO_IMAGES.USDC,
     token_address: '0xUSDC',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -57,7 +58,7 @@ const DEMO_TOKENS = [
   {
     name: 'BNB',
     symbol: 'BNB',
-    logo: '/crypto-images/BNB Logo.svg',
+    logo: CRYPTO_IMAGES.BNB,
     token_address: '0xBNB',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -67,7 +68,7 @@ const DEMO_TOKENS = [
   {
     name: 'Polygon',
     symbol: 'MATIC',
-    logo: '/crypto-images/Polygon Matic Logo.svg',
+    logo: CRYPTO_IMAGES.MATIC,
     token_address: '0xMATIC',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -77,7 +78,7 @@ const DEMO_TOKENS = [
   {
     name: 'Solana',
     symbol: 'SOL',
-    logo: '/crypto-images/Solana Logo.svg',
+    logo: CRYPTO_IMAGES.SOL,
     token_address: '0xSOL',
     balance: '0',
     balanceFormatted: '0.0000',
@@ -87,7 +88,7 @@ const DEMO_TOKENS = [
   {
     name: 'XRP',
     symbol: 'XRP',
-    logo: '/crypto-images/XRP Logo.svg',
+    logo: CRYPTO_IMAGES.XRP,
     token_address: '0xXRP',
     balance: '0',
     balanceFormatted: '0.0000',

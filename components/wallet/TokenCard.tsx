@@ -156,7 +156,8 @@ export default function TokenCard({
                   sizes="40px"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = `/crypto-images/${token.symbol.toLowerCase()}.svg`;
+                    // Fallback to a generic placeholder or first letter
+                    target.src = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#e5e7eb"/><text x="20" y="25" text-anchor="middle" font-size="18" fill="#6b7280">${token.symbol[0]}</text></svg>`)}`;
                   }}
                 />
               </div>

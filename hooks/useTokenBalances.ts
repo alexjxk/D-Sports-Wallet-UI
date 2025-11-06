@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { createPublicClient, http, erc20Abi, formatUnits } from 'viem';
 import { mainnet } from 'viem/chains';
 import { SUPPORTED_TOKENS } from '@/constants/tokens';
+import { CRYPTO_IMAGES } from '@/utils/cryptoImages';
 
 // Create viem public client for reading blockchain data
 const publicClient = createPublicClient({
@@ -48,7 +49,7 @@ async function fetchTokenBalance(
         balance: balance.toString(),
         balanceFormatted: formatted,
         balanceRaw: balance,
-        logo: '/crypto-images/Ethereum ETH Logo.svg',
+        logo: CRYPTO_IMAGES.ETH,
       };
     }
     
@@ -111,7 +112,7 @@ export function useTokenBalances(walletAddress?: string, chainId: number = 1) {
           symbol: 'ETH',
           name: 'Ethereum',
           decimals: 18,
-          logoPath: '/crypto-images/Ethereum ETH Logo.svg'
+          logoPath: CRYPTO_IMAGES.ETH
         },
         ...tokens
       ];
