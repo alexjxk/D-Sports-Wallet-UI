@@ -25,8 +25,8 @@ export function WalletHeader({ activeWallet, onWalletChange, onManageWallets }: 
   return (
     <>
       <div className="bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex-shrink-0">
               <button
                 onClick={() => setIsDrawerOpen(true)}
@@ -50,7 +50,7 @@ export function WalletHeader({ activeWallet, onWalletChange, onManageWallets }: 
                 onClick={() => setIsMissionsOpen(true)}
                 className="bg-amber-500 hover:bg-amber-600 text-white px-3 sm:px-4 py-2 rounded-full text-sm flex items-center gap-2 flex-shrink-0"
               >
-                <TrendingUp className="h-4 w-4" />
+                <TrendingUp className="h-4 w-4 md:h-5 md:w-5" />
                 <span className="hidden sm:inline">Missions</span>
               </Button>
               

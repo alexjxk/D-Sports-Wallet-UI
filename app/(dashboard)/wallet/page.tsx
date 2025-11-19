@@ -49,7 +49,7 @@ export default function WalletPage() {
     switch (activeTab) {
       case 'wallet':
         return (
-          <div className="py-6 sm:py-8 space-y-8">
+          <div className="space-y-6 md:space-y-8">
             <BalanceHeader
               balance={activeWallet.balanceCAD}
               change24h={activeWallet.change24h}
@@ -58,7 +58,7 @@ export default function WalletPage() {
               onToggleVisibility={() => setIsBalanceHidden(!isBalanceHidden)}
             />
             <ActionButtonsRow />
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div className="px-4 sm:px-6 lg:px-8 space-y-6">
               <WalletManagementCard
                 walletCount={MOCK_WALLETS.length}
                 onManageWallets={handleManageWallets}
@@ -76,7 +76,7 @@ export default function WalletPage() {
       
       case 'Earn':
         return (
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             <Card>
               <CardContent className="p-6">
                 <div className="text-center py-12">
@@ -90,7 +90,7 @@ export default function WalletPage() {
       
       case 'collectables':
         return (
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             <Card>
               <CardContent className="p-6">
                 <div className="text-center py-12">
@@ -115,12 +115,13 @@ export default function WalletPage() {
         onManageWallets={handleManageWallets}
       />
       
-      <WalletTabs
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
-
-      {renderTabContent()}
+      <main className="max-w-6xl mx-auto w-full py-8 md:py-12">
+        <WalletTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+        />
+        {renderTabContent()}
+      </main>
 
       {/* Manage Wallets Bottom Sheet */}
       <BottomSheet open={isManageWalletsOpen} onOpenChange={setIsManageWalletsOpen}>

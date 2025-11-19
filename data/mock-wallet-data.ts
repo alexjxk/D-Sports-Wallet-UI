@@ -59,7 +59,7 @@ export const MOCK_WALLETS: MockWallet[] = [
     name: 'Trading Wallet',
     address: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
     balance: 1250.50,
-    balanceCAD: 1688.18,
+    balanceCAD: 128158.53,
     change24h: -1.25,
     changeAmount: -21.10,
   },

@@ -30,9 +30,9 @@ export function BalanceHeader({
   const isPositive = change24h >= 0;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 flex flex-col items-center">
+    <div className="py-8 md:py-12 flex flex-col items-center">
       <div className="flex items-center justify-center mb-2">
-        <span className="text-gray-600 text-sm flex items-center gap-2">
+        <span className="text-gray-600 text-sm md:text-base flex items-center gap-2">
           Total Balance
           <button
             onClick={onToggleVisibility}
@@ -48,7 +48,7 @@ export function BalanceHeader({
         </span>
       </div>
       
-      <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2">
         {isHidden ? '••••••' : formatBalance(balance)}
       </div>
       

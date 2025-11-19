@@ -16,8 +16,8 @@ const TABS = [
 
 export function WalletTabs({ activeTab, onTabChange }: WalletTabsProps) {
   return (
-    <div className="bg-white border-b border-gray-100 px-4 sm:px-6">
-      <div className="flex gap-6" role="tablist">
+    <div className="bg-white border-b border-gray-100">
+      <div className="flex gap-6 px-4 sm:px-6 lg:px-8" role="tablist">
         {TABS.map(({ key, label, icon: Icon }) => (
           <button
             key={key}
