@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Plus, LogIn, MoreVertical, Edit, Trash2, Shield, Key, Eye, EyeOff, AlertTriangle, Copy, CheckCircle2 } from 'lucide-react';
+import { Plus, LogIn, MoreVertical, Edit, Trash2, Shield, Key, Eye, EyeOff, AlertTriangle, Copy, CheckCircle2, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -95,6 +95,7 @@ export function WalletManagementCard({ walletCount, onManageWallets, onSecurityC
   return (
     <>
       <div className="p-4 bg-white rounded-lg border border-gray-200">
+        {/* Top row: Title and menu */}
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold text-gray-900">Wallet Management</h3>
           <DropdownMenu>
@@ -120,10 +121,22 @@ export function WalletManagementCard({ walletCount, onManageWallets, onSecurityC
           </DropdownMenu>
         </div>
         
-        <div className="flex gap-2 flex-wrap items-center">
+        {/* Second row: Wallet count with chevron */}
+        <button
+          onClick={onManageWallets}
+          className="flex items-center justify-between w-full p-2 mb-3 hover:bg-gray-50 rounded-lg transition-colors group"
+        >
+          <span className="text-sm text-gray-600">
+            {walletCount} wallet{walletCount !== 1 ? 's' : ''}
+          </span>
+          <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
+        </button>
+        
+        {/* Third row: Buttons side by side */}
+        <div className="flex gap-2">
           <Button
             onClick={() => setIsAddWalletOpen(true)}
-            className="bg-amber-500 hover:bg-amber-600 text-white"
+            className="bg-amber-500 hover:bg-amber-600 text-white flex-1"
             size="sm"
           >
             <Plus className="h-4 w-4 mr-1" />
@@ -134,17 +147,11 @@ export function WalletManagementCard({ walletCount, onManageWallets, onSecurityC
             onClick={() => setIsImportWalletOpen(true)}
             variant="outline"
             size="sm"
+            className="flex-1"
           >
             <LogIn className="h-4 w-4 mr-1" />
             Import Wallet
           </Button>
-          
-          <button
-            onClick={onManageWallets}
-            className="text-sm text-gray-600 hover:text-gray-900 ml-auto"
-          >
-            {walletCount} wallet{walletCount !== 1 ? 's' : ''}
-          </button>
         </div>
       </div>
 

@@ -49,16 +49,27 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+body {
+  color: theme(colors.slate.950);
+  background: theme(colors.white);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 @layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

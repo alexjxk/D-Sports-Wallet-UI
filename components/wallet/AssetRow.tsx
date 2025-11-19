@@ -51,17 +51,24 @@ export function AssetRow({ asset, onClick }: AssetRowProps) {
           </div>
           
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <h3 className="font-semibold text-gray-900 truncate">{asset.name}</h3>
               <button
                 onClick={handleInfoClick}
-                className="p-1 hover:bg-gray-200 rounded-full transition-colors opacity-0 group-hover:opacity-100"
+                className="p-1 hover:bg-gray-200 rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
                 aria-label="Asset information"
               >
                 <Info className="h-3 w-3 text-gray-500" />
               </button>
             </div>
-            <p className="text-sm text-gray-500">{asset.symbol}</p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-gray-500">{asset.symbol}</p>
+              {asset.balance > 0 && (
+                <span className="text-xs text-gray-400">
+                  {asset.balanceFormatted} {asset.symbol}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         

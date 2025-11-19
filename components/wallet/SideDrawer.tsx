@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, Home, Wallet, TrendingUp, Settings, HelpCircle } from 'lucide-react';
+import { X, Wallet, Settings, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SideDrawerProps {
@@ -10,9 +10,7 @@ interface SideDrawerProps {
 }
 
 const navItems = [
-  { icon: Home, label: 'Home', href: '/' },
   { icon: Wallet, label: 'Wallet', href: '/wallet' },
-  { icon: TrendingUp, label: 'Missions', href: '/missions' },
   { icon: Settings, label: 'Settings', href: '/settings' },
   { icon: HelpCircle, label: 'Help', href: '/help' },
 ];

@@ -29,10 +29,15 @@ export function BalanceHeader({
 
   const isPositive = change24h >= 0;
 
+  const isZero = change24h === 0 && changeAmount === 0;
+  const changeColor = isZero 
+    ? 'text-gray-500' 
+    : (isPositive ? 'text-green-600' : 'text-red-600');
+
   return (
-    <div className="py-8 md:py-12 flex flex-col items-center">
-      <div className="flex items-center justify-center mb-2">
-        <span className="text-gray-600 text-sm md:text-base flex items-center gap-2">
+    <div className="py-4 md:py-6 flex flex-col items-center">
+      <div className="flex items-center justify-center mb-1.5">
+        <span className="text-gray-600 text-sm flex items-center gap-2">
           Total Balance
           <button
             onClick={onToggleVisibility}
@@ -48,17 +53,19 @@ export function BalanceHeader({
         </span>
       </div>
       
-      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2">
+      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3">
         {isHidden ? '••••••' : formatBalance(balance)}
       </div>
       
-      <div className={`flex items-center gap-4 text-sm ${isHidden ? 'opacity-50' : ''}`}>
-        <span className={`font-medium ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+      <div className={`flex flex-col items-center gap-1 text-sm ${isHidden ? 'opacity-50' : ''}`}>
+        <div className={`font-medium ${changeColor}`}>
+          <span className="text-gray-600">24h Change: </span>
           {isPositive ? '+' : ''}{change24h.toFixed(2)}%
-        </span>
-        <span className={`font-medium ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+        </div>
+        <div className={`font-medium ${changeColor}`}>
+          <span className="text-gray-600">Today: </span>
           {isPositive ? '+' : ''}{isHidden ? '••••' : formatBalance(changeAmount)}
-        </span>
+        </div>
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ Then open [http://localhost:3000/wallet](http://localhost:3000/wallet) to see th
 - ✅ Multi-chain support (Ethereum, Polygon, etc.)
 - ✅ Secure private key encryption
 - ✅ Beautiful, responsive UI
+- ✅ Improved layout and spacing for better UX
 
 ## 🎨 Viewing the Design
 
@@ -103,4 +104,4 @@ In mock mode:
 ## 📦 Export Information
 
 - **Source Project:** D-Sports PWA
-- **Version:** 0.1.15
+- **Version:** 0.1.16
